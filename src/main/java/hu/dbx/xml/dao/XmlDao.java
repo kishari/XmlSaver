@@ -8,4 +8,6 @@ package hu.dbx.xml.dao;
  */
 public interface XmlDao {
     public void saveResponse(HResponse response);
+
+    public HResponse getResponseByProposalNumber(String proposalNumber);
 }

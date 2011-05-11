@@ -34,15 +34,23 @@ public class Pilot {
             Document d = xmlUtils.getPureDocument(xmlAsString);
             Document body = xmlUtils.getEnvelopeBody(d);
 
-            System.out.println(body.toXML());
+            //System.out.println(body.toXML());
 
-            System.out.println(xmlUtils.getProposalNumber(body));
+            //System.out.println(xmlUtils.getProposalNumber(body));
 
             HResponse response = new HResponse();
             response.setXml(body.toXML());
             response.setProposalNumber(xmlUtils.getProposalNumber(body));
 
-            new XmlDaoImpl().saveResponse(response);
+            XmlDao xmlDao = new XmlDaoImpl();
+
+            xmlDao.saveResponse(response);
+
+            HResponse r = xmlDao.getResponseByProposalNumber(response.getProposalNumber());
+
+            System.out.println(r.getId() + " " + r.getProposalNumber());
+            System.out.println(r.getXml());
+
         } catch (IOException e) {
             e.printStackTrace();
         } catch (ParsingException e) {

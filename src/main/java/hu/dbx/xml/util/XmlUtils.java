@@ -17,9 +17,6 @@ import java.io.*;
  */
 public class XmlUtils {
 
-    private boolean enabledTestPrint = false;
-
-
     public Document getPureDocument(String xml) throws XSLException, IOException, ParsingException {
         InputStream styleInputStream = getClass().getClassLoader().getResourceAsStream("ns_remove.xsl");
         String styleAsString = IOUtils.toString(styleInputStream, "UTF-8");
@@ -32,12 +29,6 @@ public class XmlUtils {
 
         Document pureDoc = XSLTransform.toDocument(output);
 
-
-        if (enabledTestPrint) {
-            //testPrintOut(origin.toXML());
-            testPrintOut(pureDoc.toXML());
-        }
-
         return pureDoc;
     }
 
@@ -49,17 +40,7 @@ public class XmlUtils {
         XSLTransform transform = new XSLTransform(stylesheet);
         Nodes output = transform.transform(doc);
 
-        for (int i = 0; i < output.size(); i++){
-            //System.out.println(output.get(i).getValue());
-        }
-
         Document bodyDoc = XSLTransform.toDocument(output);
-
-
-        if (enabledTestPrint) {
-            //testPrintOut(origin.toXML());
-            testPrintOut(bodyDoc.toXML());
-        }
 
         return bodyDoc;
     }
@@ -67,11 +48,5 @@ public class XmlUtils {
     public String getProposalNumber(Document doc) {
         return XOMUtils.getSingleXPathValueNullSafe(doc, "Body/calculationResponse/general/proposalNumber");
     }
-
-    private void testPrintOut(String s) {
-        System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++");
-        System.out.println(s);
-    }
-
 
 }

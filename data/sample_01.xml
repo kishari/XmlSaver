@@ -1,0 +1,167 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/">
+    <S:Header>
+        <To xmlns="http://www.w3.org/2005/08/addressing">http://www.w3.org/2005/08/addressing/anonymous</To>
+        <Action xmlns="http://www.w3.org/2005/08/addressing">http://i3s.inverso.de/mkb/sales/tool/service/home/endpointHomeInterface/calculationResponse</Action>
+        <MessageID xmlns="http://www.w3.org/2005/08/addressing">uuid:8f289ddf-c0a7-443d-8f3a-648186e4fa66</MessageID>
+        <RelatesTo xmlns="http://www.w3.org/2005/08/addressing">uuid:58d61538-c80b-4d51-8188-afd72a072fcc</RelatesTo>
+    </S:Header>
+    <S:Body>
+        <ns3:calculationResponse xmlns:ns3="http://i3s.inverso.de/mkb/sales/tool/model/home" xmlns:ns2="http://i3s.inverso.de/mkb/sales/tool/model/type">
+            <ns2:header>
+                <ns2:version>1.0</ns2:version>
+                <ns2:language>HU</ns2:language>
+                <ns2:agentNumber>3012401</ns2:agentNumber>
+                <ns2:messageNumber>0001</ns2:messageNumber>
+                <ns2:timestamp>2011-05-04T10:28:32.060+01:00</ns2:timestamp>
+            </ns2:header>
+            <ns2:general id="0">
+                <ns2:id testattr="Szia">Hello</ns2:id>
+                <ns2:product id="1">SACH</ns2:product>
+                <ns2:beginDate id="2">2011-05-05</ns2:beginDate>
+                <ns2:bookingFrequency id="3">51</ns2:bookingFrequency>
+                <ns2:paymentMethod id="4">0</ns2:paymentMethod>
+                <ns2:valuta id="5">HUF</ns2:valuta>
+                <ns2:proposalNumber>9779970</ns2:proposalNumber>
+            </ns2:general>
+            <ns2:partnerList>
+                <ns2:partner id="7">
+                    <ns2:partnerEntity id="8">61</ns2:partnerEntity>
+                    <ns2:partnerLiability id="10">VN</ns2:partnerLiability>
+                    <ns2:gender id="12" />
+                    <ns2:title id="17"></ns2:title>
+                    <ns2:firstname id="18"></ns2:firstname>
+                    <ns2:lastname id="11"></ns2:lastname>
+                    <ns2:birthname id="13"></ns2:birthname>
+                    <ns2:mothersname id="16"></ns2:mothersname>
+                    <ns2:birthDate id="15">1981-05-04</ns2:birthDate>
+                    <ns2:birthplace id="14"></ns2:birthplace>
+                    <ns2:zip id="9">1054</ns2:zip>
+                    <ns2:citizenship id="19">H</ns2:citizenship>
+                    <ns2:phone id="33">;;</ns2:phone>
+                    <ns2:email id="34"></ns2:email>
+                    <ns2:bankAccount id="35"></ns2:bankAccount>
+                    <ns2:bankName id="36"></ns2:bankName>
+                    <ns2:taxNumber id="37"></ns2:taxNumber>
+                    <ns2:addressList id="20">
+                        <ns2:address id="21">
+                            <ns2:addressType id="22">H</ns2:addressType>
+                            <ns2:streetHouse id="23">dummy , 1 </ns2:streetHouse>
+                            <ns2:zip id="24">1054</ns2:zip>
+                            <ns2:city id="25">dummy</ns2:city>
+                            <ns2:country id="26">H</ns2:country>
+                        </ns2:address>
+                        <ns2:address id="27">
+                            <ns2:addressType id="28">N</ns2:addressType>
+                            <ns2:streetHouse id="29">dummy , 1 </ns2:streetHouse>
+                            <ns2:zip id="30">1054</ns2:zip>
+                            <ns2:city id="31">dummy</ns2:city>
+                            <ns2:country id="32">H</ns2:country>
+                        </ns2:address>
+                    </ns2:addressList>
+                </ns2:partner>
+                <ns2:partner id="38">
+                    <ns2:partnerEntity id="39">61</ns2:partnerEntity>
+                    <ns2:partnerLiability id="41">VP</ns2:partnerLiability>
+                    <ns2:gender id="43" />
+                    <ns2:title id="48"></ns2:title>
+                    <ns2:firstname id="49"></ns2:firstname>
+                    <ns2:lastname id="42"></ns2:lastname>
+                    <ns2:birthname id="44"></ns2:birthname>
+                    <ns2:mothersname id="47"></ns2:mothersname>
+                    <ns2:birthDate id="46">1981-05-04</ns2:birthDate>
+                    <ns2:birthplace id="45"></ns2:birthplace>
+                    <ns2:zip id="40">1054</ns2:zip>
+                    <ns2:citizenship id="50">H</ns2:citizenship>
+                    <ns2:phone id="64">;;</ns2:phone>
+                    <ns2:email id="65"></ns2:email>
+                    <ns2:bankAccount id="66"></ns2:bankAccount>
+                    <ns2:bankName id="67"></ns2:bankName>
+                    <ns2:taxNumber id="68"></ns2:taxNumber>
+                    <ns2:addressList id="51">
+                        <ns2:address id="52">
+                            <ns2:addressType id="53">H</ns2:addressType>
+                            <ns2:streetHouse id="54">dummy , 1 </ns2:streetHouse>
+                            <ns2:zip id="55">1054</ns2:zip>
+                            <ns2:city id="56">dummy</ns2:city>
+                            <ns2:country id="57">H</ns2:country>
+                        </ns2:address>
+                        <ns2:address id="58">
+                            <ns2:addressType id="59">N</ns2:addressType>
+                            <ns2:streetHouse id="60">dummy , 1 </ns2:streetHouse>
+                            <ns2:zip id="61">1054</ns2:zip>
+                            <ns2:city id="62">dummy</ns2:city>
+                            <ns2:country id="63">H</ns2:country>
+                        </ns2:address>
+                    </ns2:addressList>
+                </ns2:partner>
+            </ns2:partnerList>
+            <ns3:homeList id="69">
+                <ns3:home id="70">
+                    <ns3:productHome id="71">01</ns3:productHome>
+                    <ns3:bundleAllowance>Y</ns3:bundleAllowance>
+                    <ns3:buildingList id="72">
+                        <ns3:building id="73">
+                            <ns2:zip id="74">1054</ns2:zip>
+                            <ns3:buildingHabitableSurface id="75">100</ns3:buildingHabitableSurface>
+                            <ns3:buildingOccupied id="76">Y</ns3:buildingOccupied>
+                            <ns3:coverageList>
+                                <ns3:coverage id="78">
+                                    <ns2:coverageType id="79">HR01</ns2:coverageType>
+                                    <ns3:insuranceSum id="80">8000000</ns3:insuranceSum>
+                                </ns3:coverage>
+                                <ns3:coverage id="81">
+                                    <ns2:coverageType id="82">HR02</ns2:coverageType>
+                                    <ns3:insuranceSum id="0">6800000</ns3:insuranceSum>
+                                </ns3:coverage>
+                                <ns3:coverage id="83">
+                                    <ns2:coverageType id="84">HR03</ns2:coverageType>
+                                    <ns3:insuranceSum id="85">1000000</ns3:insuranceSum>
+                                </ns3:coverage>
+                                <ns3:coverage id="86">
+                                    <ns2:coverageType id="88">HR04</ns2:coverageType>
+                                    <ns3:insuranceSum id="87">1000000</ns3:insuranceSum>
+                                </ns3:coverage>
+                            </ns3:coverageList>
+                        </ns3:building>
+                    </ns3:buildingList>
+                </ns3:home>
+            </ns3:homeList>
+            <ns2:result>
+                <ns2:resultCoverageList>
+                    <ns2:resultCoverage>
+                        <ns2:coverageProductId>HR</ns2:coverageProductId>
+                        <ns2:coverageBuildingId>73</ns2:coverageBuildingId>
+                        <ns2:coverageType>HR01</ns2:coverageType>
+                        <ns2:coveragePremium>7834</ns2:coveragePremium>
+                    </ns2:resultCoverage>
+                    <ns2:resultCoverage>
+                        <ns2:coverageProductId>HR</ns2:coverageProductId>
+                        <ns2:coverageBuildingId>73</ns2:coverageBuildingId>
+                        <ns2:coverageType>HR02</ns2:coverageType>
+                        <ns2:coveragePremium>6659</ns2:coveragePremium>
+                    </ns2:resultCoverage>
+                    <ns2:resultCoverage>
+                        <ns2:coverageProductId>HR</ns2:coverageProductId>
+                        <ns2:coverageBuildingId>73</ns2:coverageBuildingId>
+                        <ns2:coverageType>HR03</ns2:coverageType>
+                        <ns2:coveragePremium>1440</ns2:coveragePremium>
+                    </ns2:resultCoverage>
+                    <ns2:resultCoverage>
+                        <ns2:coverageProductId>HR</ns2:coverageProductId>
+                        <ns2:coverageBuildingId>73</ns2:coverageBuildingId>
+                        <ns2:coverageType>HR04</ns2:coverageType>
+                        <ns2:coveragePremium>4800</ns2:coveragePremium>
+                    </ns2:resultCoverage>
+                </ns2:resultCoverageList>
+                <ns2:discountSum>864</ns2:discountSum>
+                <ns2:discountPercent>4</ns2:discountPercent>
+                <ns2:surchargeSum>0</ns2:surchargeSum>
+                <ns2:surchargePercent>0</ns2:surchargePercent>
+                <ns2:installmentPremium>20733</ns2:installmentPremium>
+                <ns2:yearlyPremium>20733</ns2:yearlyPremium>
+            </ns2:result>
+            <ns2:errorList />
+        </ns3:calculationResponse>
+    </S:Body>
+</S:Envelope>

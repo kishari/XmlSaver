@@ -19,7 +19,7 @@ import java.io.*;
  */
 public class XmlUtils {
 
-    private boolean enabledTestPrint = true;
+    private boolean enabledTestPrint = false;
 
 
     public Document getPureDocument(String xml) throws XSLException, IOException, ParsingException {
@@ -37,10 +37,9 @@ public class XmlUtils {
 
         if (enabledTestPrint) {
             //testPrintOut(origin.toXML());
-            //testPrintOut(pureDoc.toXML());
+            testPrintOut(pureDoc.toXML());
         }
 
-        getEnvelopeBody(pureDoc);
         return pureDoc;
     }
 
@@ -65,6 +64,10 @@ public class XmlUtils {
         }
 
         return bodyDoc;
+    }
+
+    public String getProposalNumber(Document doc) {
+        return XOMUtils.getSingleXPathValueNullSafe(doc, "Body/calculationResponse/general/proposalNumber");
     }
 
     private void testPrintOut(String s) {

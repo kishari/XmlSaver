@@ -33,22 +33,27 @@ public class XOMUtils {
         return new Builder().build(xmlData, null);
     }
 
+    public static String getSingleXPathValueNullSafe(Node node, String childXPath) {
+        final Node firstNode = getFirstNode(node, childXPath);
+        return firstNode == null ? null : firstNode.getValue();
+    }
 
-
-//------------------------------------
-    protected static Node getFirstNode(Node node, String childXPath) {
+    private static Node getFirstNode(Node node, String childXPath) {
         final Nodes nodes = node.query(childXPath);
         return nodes != null && nodes.size() > 0 ? nodes.get(0) : null;
     }
+
+
+
+//------------------------------------
+//------------------------------------
+
 
     public static String getSingleXPathValue(Node node, String childXPath) {
         return getFirstNode(node, childXPath).getValue();
     }
 
-    public static String getSingleXPathValueNullSafe(Node node, String childXPath) {
-        final Node firstNode = getFirstNode(node, childXPath);
-        return firstNode == null ? null : firstNode.getValue();
-    }
+
 
     public static Object getSimpleObjectXPathValue(Node node, String childXPath) {
         final Node pathNode = getFirstNode(node, childXPath);

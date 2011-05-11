@@ -1,6 +1,7 @@
 package hu.dbx.xml;
 
 import hu.dbx.xml.util.XmlUtils;
+import nu.xom.Document;
 import nu.xom.ParsingException;
 import nu.xom.xslt.XSLException;
 import org.apache.commons.io.FileUtils;
@@ -14,7 +15,7 @@ import java.io.IOException;
  * Date: 2011.05.11.
  * Time: 13:17
  */
-public class Main {
+public class Pilot {
 
     public static void main(String[] args) {
 
@@ -23,10 +24,18 @@ public class Main {
         File f = new File(path);
         String xmlAsString = "";
 
+        XmlUtils xmlUtils = new XmlUtils();
         try {
             xmlAsString = FileUtils.readFileToString(f);
 
-            new XmlUtils().getPureDocument(xmlAsString);
+            Document d = xmlUtils.getPureDocument(xmlAsString);
+            Document body = xmlUtils.getEnvelopeBody(d);
+
+            System.out.println(body.toXML());
+
+            System.out.println(xmlUtils.getProposalNumber(body));
+
+
         } catch (IOException e) {
             e.printStackTrace();
         } catch (ParsingException e) {

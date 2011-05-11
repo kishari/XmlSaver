@@ -1,6 +1,7 @@
 package hu.dbx.xml.util;
 
 import nu.xom.Document;
+import nu.xom.Node;
 import nu.xom.Nodes;
 import nu.xom.ParsingException;
 import nu.xom.xslt.XSLException;
@@ -30,20 +31,40 @@ public class XmlUtils {
 
         XSLTransform transform = new XSLTransform(stylesheet);
         Nodes output = transform.transform(origin);
+
         Document pureDoc = XSLTransform.toDocument(output);
 
 
         if (enabledTestPrint) {
             //testPrintOut(origin.toXML());
-            testPrintOut(pureDoc.toXML());
+            //testPrintOut(pureDoc.toXML());
         }
 
+        getEnvelopeBody(pureDoc);
         return pureDoc;
     }
 
-    public Document getEnvelopeBody(Document doc) {
+    public Document getEnvelopeBody(Document doc) throws IOException, ParsingException, XSLException {
+        InputStream styleInputStream = getClass().getClassLoader().getResourceAsStream("get_body.xsl");
+        String styleAsString = IOUtils.toString(styleInputStream, "UTF-8");
+        Document stylesheet = XOMUtils.buildDocumentFromString(styleAsString);
 
-        return null;
+        XSLTransform transform = new XSLTransform(stylesheet);
+        Nodes output = transform.transform(doc);
+
+        for (int i = 0; i < output.size(); i++){
+            //System.out.println(output.get(i).getValue());
+        }
+
+        Document bodyDoc = XSLTransform.toDocument(output);
+
+
+        if (enabledTestPrint) {
+            //testPrintOut(origin.toXML());
+            testPrintOut(bodyDoc.toXML());
+        }
+
+        return bodyDoc;
     }
 
     private void testPrintOut(String s) {

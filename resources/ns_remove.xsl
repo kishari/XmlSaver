@@ -21,9 +21,5 @@
   <!-- Az id attribútumokat törölje -->
   <xsl:template match="@id"/>
 
-<!--    <xsl:template match="//Body">
-        <xsl:copy-of select="*"/>
-    </xsl:template>
--->
 </xsl:stylesheet>
 

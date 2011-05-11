@@ -20,18 +20,12 @@ import java.io.IOException;
  */
 public class Pilot {
 
-    public static void main(String[] args) {
-
-        String path = "/home/csaba/src/XmlSaver/data/sample_01.xml";
-
-        File f = new File(path);
-        String xmlAsString = "";
-
+    private XmlDao xmlDao = new XmlDaoImpl();
+    public void saveResponse(String xmlResponse) {
         XmlUtils xmlUtils = new XmlUtils();
-        try {
-            xmlAsString = FileUtils.readFileToString(f);
 
-            Document d = xmlUtils.getPureDocument(xmlAsString);
+        try {
+            Document d = xmlUtils.getPureDocument(xmlResponse);
             Document body = xmlUtils.getEnvelopeBody(d);
 
             //System.out.println(body.toXML());
@@ -42,14 +36,7 @@ public class Pilot {
             response.setXml(body.toXML());
             response.setProposalNumber(xmlUtils.getProposalNumber(body));
 
-            XmlDao xmlDao = new XmlDaoImpl();
-
             xmlDao.saveResponse(response);
-
-            HResponse r = xmlDao.getResponseByProposalNumber(response.getProposalNumber());
-
-            System.out.println(r.getId() + " " + r.getProposalNumber());
-            System.out.println(r.getXml());
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -58,5 +45,25 @@ public class Pilot {
         } catch (XSLException e) {
             e.printStackTrace();
         }
+
+    }
+
+    public HResponse getResponseByProposalNumber(String proposalNumber) {
+        HResponse response = xmlDao.getResponseByProposalNumber(proposalNumber);
+        return response;
+    }
+
+    public static void main(String[] args) {
+
+        Pilot pilot = new Pilot();
+
+        File f = new File("/home/csaba/src/XmlSaver/data/sample_01.xml");
+        try {
+            pilot.saveResponse(FileUtils.readFileToString(f));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        System.out.println(pilot.getResponseByProposalNumber("9779970").getXml());
     }
 }

@@ -6,9 +6,9 @@ import nu.xom.ParsingException;
 import nu.xom.xslt.XSLException;
 import nu.xom.xslt.XSLTransform;
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.IOUtils;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 
 /**
  * Created by IntelliJ IDEA.
@@ -18,23 +18,38 @@ import java.io.IOException;
  */
 public class XmlUtils {
 
-    public static void processXml(String xml) throws IOException, ParsingException, XSLException {
-        //System.out.println(xml);
+    private boolean enabledTestPrint = true;
 
 
-        File style = new File("/home/csaba/src/XmlSaver/data/ns_remove.xsl");
+    public Document getPureDocument(String xml) throws XSLException, IOException, ParsingException {
+        InputStream styleInputStream = getClass().getClassLoader().getResourceAsStream("ns_remove.xsl");
+        String styleAsString = IOUtils.toString(styleInputStream, "UTF-8");
 
-        Document doc = XOMUtils.buildDocumentFromString(xml);
-        Document stylesheet = XOMUtils.buildDocumentFromString(FileUtils.readFileToString(style));
+        Document origin = XOMUtils.buildDocumentFromString(xml);
+        Document stylesheet = XOMUtils.buildDocumentFromString(styleAsString);
 
         XSLTransform transform = new XSLTransform(stylesheet);
+        Nodes output = transform.transform(origin);
+        Document pureDoc = XSLTransform.toDocument(output);
 
-        Nodes output = transform.transform(doc);
-        Document result = XSLTransform.toDocument(output);
-        System.out.println(result.toXML());
 
-        //System.out.println(doc.toXML());
-        //XPathResolver resolver = new XPathResolver(doc);
-        //System.out.println(resolver.get("S:Envelope/S:Body"));
+        if (enabledTestPrint) {
+            //testPrintOut(origin.toXML());
+            testPrintOut(pureDoc.toXML());
+        }
+
+        return pureDoc;
     }
+
+    public Document getEnvelopeBody(Document doc) {
+
+        return null;
+    }
+
+    private void testPrintOut(String s) {
+        System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++");
+        System.out.println(s);
+    }
+
+
 }

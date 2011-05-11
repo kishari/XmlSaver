@@ -25,7 +25,8 @@ public class Main {
 
         try {
             xmlAsString = FileUtils.readFileToString(f);
-            XmlUtils.processXml(xmlAsString);
+
+            new XmlUtils().getPureDocument(xmlAsString);
         } catch (IOException e) {
             e.printStackTrace();
         } catch (ParsingException e) {

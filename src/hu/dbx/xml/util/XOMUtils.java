@@ -29,6 +29,18 @@ public class XOMUtils {
         }
     }
 
+    public static Document buildDocumentFromString(String xmlData) throws ParsingException, IOException {
+        return new Builder().build(xmlData, null);
+    }
+
+
+
+//------------------------------------
+    protected static Node getFirstNode(Node node, String childXPath) {
+        final Nodes nodes = node.query(childXPath);
+        return nodes != null && nodes.size() > 0 ? nodes.get(0) : null;
+    }
+
     public static String getSingleXPathValue(Node node, String childXPath) {
         return getFirstNode(node, childXPath).getValue();
     }
@@ -54,12 +66,4 @@ public class XOMUtils {
         }
     }
 
-    public static Document buildDocumentFromString(String xmlData) throws ParsingException, IOException {
-        return new Builder().build(xmlData, null);
-    }
-
-    protected static Node getFirstNode(Node node, String childXPath) {
-        final Nodes nodes = node.query(childXPath);
-        return nodes != null && nodes.size() > 0 ? nodes.get(0) : null;
-    }
 }

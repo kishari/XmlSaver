@@ -1,12 +1,10 @@
 package hu.dbx.xml.util;
 
 import nu.xom.Document;
-import nu.xom.Node;
 import nu.xom.Nodes;
 import nu.xom.ParsingException;
 import nu.xom.xslt.XSLException;
 import nu.xom.xslt.XSLTransform;
-import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 
 import java.io.*;

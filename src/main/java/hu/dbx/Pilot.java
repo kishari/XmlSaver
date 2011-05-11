@@ -1,4 +1,4 @@
-package hu.dbx.xml;
+package hu.dbx;
 
 import hu.dbx.xml.util.XmlUtils;
 import nu.xom.Document;

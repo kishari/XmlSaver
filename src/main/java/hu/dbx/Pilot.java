@@ -1,5 +1,8 @@
 package hu.dbx;
 
+import hu.dbx.xml.dao.HResponse;
+import hu.dbx.xml.dao.XmlDao;
+import hu.dbx.xml.dao.XmlDaoImpl;
 import hu.dbx.xml.util.XmlUtils;
 import nu.xom.Document;
 import nu.xom.ParsingException;
@@ -35,7 +38,11 @@ public class Pilot {
 
             System.out.println(xmlUtils.getProposalNumber(body));
 
+            HResponse response = new HResponse();
+            response.setXml(body.toXML());
+            response.setProposalNumber(xmlUtils.getProposalNumber(body));
 
+            new XmlDaoImpl().saveResponse(response);
         } catch (IOException e) {
             e.printStackTrace();
         } catch (ParsingException e) {

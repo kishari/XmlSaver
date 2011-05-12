@@ -34,7 +34,10 @@ public class Pilot {
 
             HResponse response = new HResponse();
             response.setXml(body.toXML());
-            response.setProposalNumber(xmlUtils.getProposalNumber(body));
+
+            String tmp = xmlUtils.getProposalNumber(body);
+            String pNumber = tmp != null ? tmp : "nem volt kitöltve";
+            response.setProposalNumber(pNumber);
 
             xmlDao.saveResponse(response);
 
@@ -57,7 +60,7 @@ public class Pilot {
 
         Pilot pilot = new Pilot();
 
-        File f = new File("/home/csaba/src/XmlSaver/data/sample_01.xml");
+        File f = new File("/home/csaba/src/XmlSaver/data/sample_04.xml");
         try {
             pilot.saveResponse(FileUtils.readFileToString(f));
         } catch (IOException e) {

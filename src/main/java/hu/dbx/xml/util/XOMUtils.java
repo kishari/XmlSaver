@@ -19,16 +19,6 @@ import nu.xom.*;
 
 public class XOMUtils {
 
-    private static JAXBContext ctx;
-
-    static {
-        try {
-            ctx = JAXBContext.newInstance(Object.class);
-        } catch (JAXBException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
     public static Document buildDocumentFromString(String xmlData) throws ParsingException, IOException {
         return new Builder().build(xmlData, null);
     }
@@ -41,34 +31,6 @@ public class XOMUtils {
     private static Node getFirstNode(Node node, String childXPath) {
         final Nodes nodes = node.query(childXPath);
         return nodes != null && nodes.size() > 0 ? nodes.get(0) : null;
-    }
-
-
-
-//------------------------------------
-//------------------------------------
-
-
-    public static String getSingleXPathValue(Node node, String childXPath) {
-        return getFirstNode(node, childXPath).getValue();
-    }
-
-
-
-    public static Object getSimpleObjectXPathValue(Node node, String childXPath) {
-        final Node pathNode = getFirstNode(node, childXPath);
-        if (pathNode instanceof Element && ((Element)pathNode).getAttribute("type", "http://www.w3.org/2001/XMLSchema-instance") == null) {
-            return pathNode.getValue();
-        } else {
-            final String xmlRepresentation = pathNode.toXML();
-            try {
-                Unmarshaller um = ctx.createUnmarshaller();
-                final JAXBElement<Object> jaxbElementInt = um.unmarshal(new StreamSource(new StringReader(xmlRepresentation)), Object.class);
-                return jaxbElementInt.getValue();
-            } catch (JAXBException e) {
-                throw new RuntimeException(e);
-            }
-        }
     }
 
 }
